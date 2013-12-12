@@ -1,0 +1,1 @@
+This file was created by JetBrains RubyMine 4.5.4 for binding GitHub repository
