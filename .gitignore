@@ -1,0 +1,16 @@
+# RubyMine
+.idea
+
+# Bundler/Rubygems
+*.gem
+.bundle
+pkg/*
+tags
+Gemfile.lock
+
+# Vagrant
+.vagrant
+Vagrantfile
+
+# Other
+nfspaths
