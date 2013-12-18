@@ -43,11 +43,14 @@ module VagrantPlugins
         rule_exist = "netsh advfirewall firewall show rule name=\"%s\">nul"
 
         unless system(sprintf(rule_exist, rule_name))
-          rule = "netsh advfirewall firewall add rule name=\"%s\" dir=\"%s\" action=allow protocol=any program=\"%s\" profile=any>nul"
+          rule = "advfirewall firewall add rule name='%s' dir='%s' action=allow protocol=any program='%s' profile=any"
           in_rule = sprintf(rule, rule_name, 'in', program)
           out_rule = sprintf(rule, rule_name, 'out', program)
 
-          if !system(in_rule) || !system(out_rule)
+          firewall_script = VagrantWinNFSd.get_path_for_file("setupfirewall.vbs")
+          firewall_rule = "cscript //nologo #{firewall_script} \"#{in_rule}\" \"#{out_rule}\""
+
+          unless system(firewall_rule)
             puts I18n.t("vagrant_winnfsd.firewall.error")
             puts "#{in_rule}\n"
             puts "#{out_rule}\n"

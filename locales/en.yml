@@ -10,4 +10,4 @@ en:
     firewall:
       error: |-
         It seems that you don't have the prevelegs to change the firewall rules. NFS will not work without that firewall
-        changes. Run Vagrant as administartor or execute the following comands as administartor:
+        changes. Execute the following comands as administartor:

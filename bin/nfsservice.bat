@@ -17,7 +17,7 @@ if %1==status (
 if %1==start (
     printf "[NFS] Start: "
     if %RUNNINGTASKS% == 0 (
-        start "%~dp0winnfsd" -log off -pathFile %2
+        start "" "%~dp0winnfsd" -log off -pathFile %2
         printf "started\n"
     ) else (
         printf "already running\n"
