@@ -11,6 +11,3 @@ Gemfile.lock
 # Vagrant
 .vagrant
 Vagrantfile
-
-# Other
-nfspaths

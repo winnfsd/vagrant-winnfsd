@@ -1,12 +1,19 @@
 CHANGELOG
 =========
 
+1.0.3
+-----
+
+Move nfspaths file to .vagrant dir
+
+
 1.0.2
 -----
 
 2013-12-18
 
 Improve setting up of the firewall rules
+
 
 1.0.1
 -----
@@ -16,11 +23,10 @@ Improve setting up of the firewall rules
 Fix batch file
 Easy setup for the firewall rules
 
+
 1.0.0
 -----
 
 2013-12-12
 
 First release
-
-

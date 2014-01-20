@@ -16,7 +16,7 @@ module VagrantPlugins
         @nfs_check_command = "\"#{executable}\" status"
         @nfs_start_command = "\"#{executable}\" start"
         @nfs_stop_command = "\"#{executable}\" halt"
-        @nfs_path_file = "nfspaths"
+        @nfs_path_file = ".vagrant\\nfspaths"
       end
 
       # Windows does not support NFS
