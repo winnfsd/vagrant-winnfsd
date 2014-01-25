@@ -1,41 +1,37 @@
 @echo off
-tasklist /nh /fi "imagename eq winnfsd.exe" 2>nul | grep -i -c "winnfsd.exe" >nfsservicetmp
-set /p RUNNINGTASKS=<nfsservicetmp
-del nfsservicetmp
 
-if %1==status (
-    :: printf "[NFS] Status: "
-    if %RUNNINGTASKS% == 0 (
-        :: printf "halted\n"
-        exit 1
+:: http://technet.microsoft.com/en-us/library/bb491001.aspx OR http://www.robvanderwoude.com/allhelpw2ksp4_en.php#SETLOCAL
+verify other 2>nul
+    setlocal enableextensions
+    if errorlevel 1 echo Unable to enable command extensions
+
+for /f "tokens=1 delims= " %%y in ('tasklist /nh /fi "imagename eq winnfsd.exe"') do @set result=%%y
+
+if "%1"=="status" (
+    echo "[NFS] Status: "
+    if "%result%" == "INFO:" (
+        echo "halted"
     ) else (
-        :: printf "running\n"
-        exit 0
+        echo "running"
     )
 )
 
-if %1==start (
-    printf "[NFS] Start: "
-    if %RUNNINGTASKS% == 0 (
+if "%1"=="start" (
+    echo "[NFS] Start: "
+    if "%result%" == "INFO:" (
         start "" "%~dp0winnfsd" -log off -pathFile %2
-        printf "started\n"
+        echo "started"
     ) else (
-        printf "already running\n"
+        echo "already running"
     )
-    
-    exit 0
 )
 
-if %1==halt (
-    printf "[NFS] Halt: "
-    if %RUNNINGTASKS% == 0 (
-        printf "not running\n"
+if "%1"=="halt" (
+    echo "[NFS] Halt: "
+    if "%result%" == "INFO:" (
+        echo "not running"
     ) else (
         taskkill /f /im "winnfsd.exe" >nul
-        printf "halt\n"
+        echo "halt"
     )
-    
-    exit 0
 )
-
-exit 1
