@@ -1,5 +1,6 @@
 @echo off
 
+:: Fancy way to enable command extensions, where available
 :: http://technet.microsoft.com/en-us/library/bb491001.aspx OR http://www.robvanderwoude.com/allhelpw2ksp4_en.php#SETLOCAL
 verify other 2>nul
     setlocal enableextensions
