@@ -8,7 +8,7 @@ module VagrantPlugins
         switch_back = {}
 
         @__synced_folders.each do |id, options|
-          if (options[:nfs] || options[:type] == :nfs) && Vagrant::Util::Platform.windows?
+          if (options[:nfs] || options[:type] == :nfs || options[:type] == "nfs") && Vagrant::Util::Platform.windows?
             switch_back[id] = true
           end
         end
