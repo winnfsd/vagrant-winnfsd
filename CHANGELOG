@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+1.0.6
+-----
+
+Add support for vagrant 1.5.0 and higher
+Remove support for vagrant lower than 1.5.0
+Improve error message
+
+
 1.0.5
 -----
 
