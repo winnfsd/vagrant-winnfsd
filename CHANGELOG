@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+1.0.7
+-----
+
+Add uid and gid support
+Add support for multiple boxes
+
+
 1.0.6
 -----
 

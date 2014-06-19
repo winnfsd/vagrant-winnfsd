@@ -1,8 +1,8 @@
 require 'vagrant'
-require Vagrant.source_root.join("plugins/kernel_v2/config/vm")
+require Vagrant.source_root.join('plugins/kernel_v2/config/vm')
 
-module VagrantPlugins
-  module VagrantWinNFSd
+module VagrantWinNFSd
+  module Config
     class Config < VagrantPlugins::Kernel_V2::VMConfig
       def finalize!
         switch_back = {}

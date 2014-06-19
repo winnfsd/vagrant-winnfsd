@@ -1,5 +1,4 @@
-module VagrantPlugins
-  module VagrantWinNFSd
-    VERSION = '1.0.6'
-  end
+
+module VagrantWinNFSd
+  VERSION = '1.0.7'
 end

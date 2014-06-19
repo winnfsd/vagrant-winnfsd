@@ -3,7 +3,7 @@ require "vagrant-winnfsd/version"
 
 Gem::Specification.new do |gem|
   gem.name    = 'vagrant-winnfsd'
-  gem.version = VagrantPlugins::VagrantWinNFSd::VERSION
+  gem.version = VagrantWinNFSd::VERSION
 
   gem.summary     = 'Adds NFS support for Windows'
   gem.description = <<-EOD
