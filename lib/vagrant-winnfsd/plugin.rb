@@ -62,6 +62,7 @@ module VagrantWinNFSd
         rule = "advfirewall firewall add rule name=\"%s\" dir=\"%s\" action=allow protocol=any program=\"%s\" profile=any"
         in_rule = sprintf(rule, rule_name, 'in', program)
         out_rule = sprintf(rule, rule_name, 'out', program)
+        xp_rule = "netsh firewall add allowedprogram \"#{program}\" #{rule_name} ENABLE"
 
         firewall_script = VagrantWinNFSd.get_path_for_file('setupfirewall.vbs')
         firewall_rule = "cscript //nologo #{firewall_script} \"#{cleanup_rule}\" \"#{in_rule}\" \"#{out_rule}\""
@@ -70,6 +71,8 @@ module VagrantWinNFSd
           puts I18n.t('vagrant_winnfsd.firewall.error')
           puts "netsh #{in_rule}\n"
           puts "netsh #{out_rule}\n"
+          puts I18n.t('vagrant_winnfsd.firewall.xp_error')
+          puts xp_rule
         end
       end
     end

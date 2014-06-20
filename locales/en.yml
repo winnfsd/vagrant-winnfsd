@@ -10,4 +10,6 @@ en:
     firewall:
       error: |-
         It seems that you don't have the privileges to change the firewall rules. NFS will not work without that firewall
-        changes. Execute the following commands as administrator:
+        changes. Execute the following commands via cmd as administrator:
+      xp_error: |-
+        If you are an Windows XP user run the following command instead:

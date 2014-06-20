@@ -28,7 +28,13 @@ Windows users: NFS folders do not work on Windows hosts. Vagrant will ignore you
 
 ## Settings
 
-You can set the uid and the gid. Example:
+### Logging
+
+You activate the logging of the nfs daemon which will show the daemon window in the foreground. To activate the logging set the `config.winnfsd.logging` to `on`.
+
+### Set uid and gid
+
+You can set the uid via the `config.winnfsd.uid` param and the gid via the `config.winnfsd.gid` param. Example:
 
 ```
 Vagrant.configure('2') do |config|

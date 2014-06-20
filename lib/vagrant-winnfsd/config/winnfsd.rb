@@ -16,7 +16,7 @@ module VagrantWinNFSd
       def validate(machine)
         errors = []
 
-        errors << 'winnfsd.logging cannot only be \'on\' or \'off\'.' if (machine.config.winnfsd.uid != 'on' || machine.config.winnfsd.uid != 'off')
+        errors << 'winnfsd.logging cannot only be \'on\' or \'off\'.' unless (machine.config.winnfsd.logging == 'on' || machine.config.winnfsd.logging == 'off')
         errors << 'winnfsd.uid cannot be nil.'                        if machine.config.winnfsd.uid.nil?
         errors << 'winnfsd.gid cannot be nil.'                        if machine.config.winnfsd.gid.nil?
 
