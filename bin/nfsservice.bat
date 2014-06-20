@@ -28,7 +28,7 @@ if %1==start (
     if %result%==winnfsd.exe (
         echo already running
     ) else (
-        start "" "%~dp0winnfsd" -log off -pathFile %2 -id %3 %4
+        start "" "%~dp0winnfsd" -log %2 -pathFile %3 -id %4 %5
         echo started
     )
     

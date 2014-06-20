@@ -9,5 +9,5 @@ en:
           Pruning invalid NFS exports.
     firewall:
       error: |-
-        It seems that you don't have the prevelegs to change the firewall rules. NFS will not work without that firewall
-        changes. Execute the following comands as administartor:
+        It seems that you don't have the privileges to change the firewall rules. NFS will not work without that firewall
+        changes. Execute the following commands as administrator:

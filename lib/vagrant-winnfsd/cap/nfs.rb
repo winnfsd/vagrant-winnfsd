@@ -36,7 +36,8 @@ module VagrantWinNFSd
         unless self.nfs_running?
           gid = env.vagrantfile.config.winnfsd.gid
           uid = env.vagrantfile.config.winnfsd.uid
-          system("#{@nfs_start_command} #{@nfs_path_file} #{uid} #{gid}")
+          logging = env.vagrantfile.config.winnfsd.logging
+          system("#{@nfs_start_command} #{logging} #{@nfs_path_file} #{uid} #{gid}")
           sleep 2
         end
       end
