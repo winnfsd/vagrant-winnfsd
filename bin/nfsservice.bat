@@ -13,7 +13,7 @@ CALL :LoCase %result
 if %1==status (
     echo|set /p=[NFS] Status: 
     
-    if %result%==winnfsd.exe (
+    if "%result%"==winnfsd.exe (
         echo running
         exit 0
     ) else (
@@ -25,7 +25,7 @@ if %1==status (
 if %1==start (
     echo|set /p=[NFS] Start: 
     
-    if %result%==winnfsd.exe (
+    if "%result%"==winnfsd.exe (
         echo already running
     ) else (
         start "" "%~dp0winnfsd" -log %2 -pathFile %3 -id %4 %5
@@ -38,7 +38,7 @@ if %1==start (
 if %1==halt (
     echo|set /p=[NFS] Halt: 
     
-    if %result%==winnfsd.exe (
+    if "%result%"==winnfsd.exe (
         taskkill /f /im "winnfsd.exe" >nul
         echo halt
     ) else (
