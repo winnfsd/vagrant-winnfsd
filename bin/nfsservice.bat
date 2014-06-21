@@ -8,7 +8,6 @@ verify other 2>nul
 
 for /f "tokens=1 delims= " %%y in ('tasklist /nh /fi "imagename eq winnfsd.exe"') do @set result=%%y
 
-echo %result%
 CALL :LoCase %result
 
 if %1==status (
