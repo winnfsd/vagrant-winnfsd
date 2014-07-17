@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+1.0.10
+------
+
+Fix issue if path contains space
+
+
 1.0.9
 -----
 
