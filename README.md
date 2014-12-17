@@ -20,10 +20,17 @@ $ vagrant plugin install vagrant-winnfsd
 
 To activate NFS for vagrant see: http://docs.vagrantup.com/v2/synced-folders/nfs.html
 
-The plugin extends vagrant in the way that you can use NFS also with windows. So the following hint on the vagrant documentation page is no longer true.
+The plugin extends vagrant in the way that you can use NFS also with windows. So the following hint on the vagrant documentation page is no longer true:
 
 ```
 Windows users: NFS folders do not work on Windows hosts. Vagrant will ignore your request for NFS synced folders on Windows.
+```
+
+You will also need to declare some sort of network in order for NFS to work (the Virtualbox implied network will not work). Luckily this is easily done by adding the following line to your Vagrantfile:
+
+```ruby
+# A private dhcp network is required for NFS to work (on Windows hosts, at least)
+config.vm.network "private_network", type: "dhcp"
 ```
 
 ## Settings
@@ -36,7 +43,7 @@ You activate the logging of the nfs daemon which will show the daemon window in 
 
 You can set the uid via the `config.winnfsd.uid` param and the gid via the `config.winnfsd.gid` param. Example:
 
-```
+```ruby
 Vagrant.configure('2') do |config|
     config.winnfsd.uid = 1
     config.winnfsd.gid = 1
