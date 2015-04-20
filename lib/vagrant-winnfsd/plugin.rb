@@ -5,7 +5,7 @@ rescue LoadError
 end
 
 if Vagrant::VERSION < "1.5.0"
-  raise "The Vagrant AWS plugin is only compatible with Vagrant 1.5.0+"
+  raise "The Vagrant WinNFSd plugin is only compatible with Vagrant 1.5.0+"
 end
 
 
