@@ -1,10 +1,10 @@
 # Vagrant WinNFSd
 
-Manage and adds support for NFS on windows.
+Manage and adds support for NFS on Windows.
 
 ## Supported Platforms
 
-As of version 1.0.6 or later Vagrant 1.5 is required. For vagrant 1.4 please use the plugin version 1.0.5 or lower.
+As of version 1.0.6 or later Vagrant 1.5 is required. For Vagrant 1.4 please use the plugin version 1.0.5 or lower.
 
 Supported guests:
 
@@ -16,17 +16,17 @@ Supported guests:
 $ vagrant plugin install vagrant-winnfsd
 ```
 
-## Activate NFS for vagrant
+## Activate NFS for Vagrant
 
-To activate NFS for vagrant see: http://docs.vagrantup.com/v2/synced-folders/nfs.html
+To activate NFS for Vagrant see: http://docs.vagrantup.com/v2/synced-folders/nfs.html
 
-The plugin extends vagrant in the way that you can use NFS also with windows. So the following hint on the vagrant documentation page is no longer true:
+The plugin extends Vagrant in the way that you can use NFS also with Windows. So the following hint on the Vagrant documentation page is no longer true:
 
 ```
 Windows users: NFS folders do not work on Windows hosts. Vagrant will ignore your request for NFS synced folders on Windows.
 ```
 
-You will also need to declare some sort of network in order for NFS to work (the Virtualbox implied network will not work). Luckily this is easily done by adding the following line to your Vagrantfile:
+You will also need to declare some sort of network in order for NFS to work (the VirtualBox implied network will not work). Luckily this is easily done by adding the following line to your `Vagrantfile`:
 
 ```ruby
 # A private dhcp network is required for NFS to work (on Windows hosts, at least)
@@ -37,7 +37,7 @@ config.vm.network "private_network", type: "dhcp"
 
 ### Logging
 
-You activate the logging of the nfs daemon which will show the daemon window in the foreground. To activate the logging set the `config.winnfsd.logging` to `on`.
+You can activate the logging of the NFS daemon which will show the daemon window in the foreground. To activate the logging set the `config.winnfsd.logging` to `on`.
 
 ### Set uid and gid
 
@@ -50,4 +50,4 @@ Vagrant.configure('2') do |config|
 end
 ```
 
-Note that will be set global, that means the uid and gid is taken from the first box which starts the nfs daemon. If a box with an other uid or gid is started after that the option will be ignored.
+Note that will be set global, that means the uid and gid is taken from the first box which starts the NFS daemon. If a box with an other uid or gid is started after that the option will be ignored.
