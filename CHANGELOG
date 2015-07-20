@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+1.1.0
+------
+
+Update binary again (contains many fixes from the winnfsd project, thanks to all contributors, especially to Yann Schepens)
+
 1.0.11
 ------
 
