@@ -69,10 +69,17 @@ module VagrantWinNFSd
         end
         mount_folders[id] = opts.dup if opts[:guestpath]
       end
-
+      
+      # Allow override of the host IP via config.
+      # TODO: This should be configurable somewhere deeper in Vagrant core.
+      host_ip = nfsopts[:nfs_host_ip]
+      if (machine.env.vagrantfile.config.winnfsd.host_ip)
+        host_ip = machine.env.vagrantfile.config.winnfsd.host_ip
+      end
+	  
       # Mount them!
       machine.guest.capability(
-        :mount_nfs_folder, nfsopts[:nfs_host_ip], mount_folders)
+        :mount_nfs_folder, host_ip, mount_folders)
     end
   end
 end
