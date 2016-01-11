@@ -73,8 +73,8 @@ module VagrantWinNFSd
       # Allow override of the host IP via config.
       # TODO: This should be configurable somewhere deeper in Vagrant core.
       host_ip = nfsopts[:nfs_host_ip]
-      if (machine.env.vagrantfile.config.winnfsd.host_ip)
-        host_ip = machine.env.vagrantfile.config.winnfsd.host_ip
+      if (machine.config.winnfsd.host_ip)
+        host_ip = machine.config.winnfsd.host_ip
       end
 	  
       # Mount them!
