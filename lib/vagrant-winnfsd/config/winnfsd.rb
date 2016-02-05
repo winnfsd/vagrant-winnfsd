@@ -33,8 +33,8 @@ module VagrantWinNFSd
         @logging = 'off'         if @logging == UNSET_VALUE
         @uid = 0                 if @uid == UNSET_VALUE
         @gid = 0                 if @gid == UNSET_VALUE
-        @host_ip = ""            if @host_ip == UNSET_VALUE
-        @stop_on_reload = 'off'  if @stop_on_reload == UNSET_VALUE
+        @host_ip = ''            if @host_ip == UNSET_VALUE
+        @halt_on_reload = 'off'  if @halt_on_reload == UNSET_VALUE
       end
     end
   end
