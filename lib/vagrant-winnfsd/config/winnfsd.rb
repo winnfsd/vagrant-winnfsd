@@ -7,14 +7,14 @@ module VagrantWinNFSd
       attr_accessor :uid
       attr_accessor :gid
       attr_accessor :host_ip
-      attr_accessor :stop_on_reload
+      attr_accessor :halt_on_reload
 
       def initialize
         @logging        = UNSET_VALUE
         @uid            = UNSET_VALUE
         @gid            = UNSET_VALUE
         @host_ip        = UNSET_VALUE
-        @stop_on_reload = UNSET_VALUE
+        @halt_on_reload = UNSET_VALUE
       end
 
       def validate(machine)
@@ -24,7 +24,7 @@ module VagrantWinNFSd
         errors << 'winnfsd.uid cannot be nil.'                            if machine.config.winnfsd.uid.nil?
         errors << 'winnfsd.gid cannot be nil.'                            if machine.config.winnfsd.gid.nil?
         errors << 'winnfsd.host_ip cannot be nil.'                        if machine.config.winnfsd.host_ip.nil?
-        errors << 'winnfsd.stop_on_reload can only be \'on\' or \'off\'.' unless ['on', 'off'].include?(machine.config.winnfsd.stop_on_reload)
+        errors << 'winnfsd.halt_on_reload can only be \'on\' or \'off\'.' unless ['on', 'off'].include?(machine.config.winnfsd.halt_on_reload)
 
         { "WinNFSd" => errors }
       end
