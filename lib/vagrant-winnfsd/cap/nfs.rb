@@ -31,14 +31,20 @@ module VagrantWinNFSd
           f.puts(nfs_file_lines)
         end
 
+        is_running = self.nfs_running?
+        
+        if is_running && self.halt_on_reload?(env)
+          self.halt_nfs
+        end
 
-
-        unless self.nfs_running?
+        if !is_running || self.halt_on_reload?(env)
           gid = env.vagrantfile.config.winnfsd.gid
           uid = env.vagrantfile.config.winnfsd.uid
           logging = env.vagrantfile.config.winnfsd.logging
           system("#{@nfs_start_command} #{logging} \"#{@nfs_path_file}\" #{uid} #{gid}")
           sleep 2
+        else
+          ui.info I18n.t('vagrant_winnfsd.hosts.windows.nfs_already_running')
         end
       end
 
@@ -76,10 +82,18 @@ module VagrantWinNFSd
 
       protected
 
+      def self.halt_on_reload?(env)
+        env.vagrantfile.config.winnfsd.halt_on_reload == 'on'
+      end
+      
       def self.nfs_running?
         system("#{@nfs_check_command}")
       end
-
+      
+      def self.halt_nfs
+        system("#{@nfs_stop_command}")
+      end
+      
       def self.nfs_cleanup(id)
         return unless File.exist?(@nfs_path_file)
 
