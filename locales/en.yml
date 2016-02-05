@@ -7,6 +7,9 @@ en:
           Preparing to edit nfs mounting file.
         nfs_prune: |-
           Pruning invalid NFS exports.
+        nfs_already_running: |-
+          WinNFSd is already running and `config.winnfsd.halt_on_reload` is not set; shares may not match the latest
+          configuration.
     firewall:
       error: |-
         It seems that you don't have the privileges to change the firewall rules. NFS will not work without that firewall

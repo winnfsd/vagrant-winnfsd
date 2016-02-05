@@ -44,7 +44,7 @@ module VagrantWinNFSd
           system("#{@nfs_start_command} #{logging} \"#{@nfs_path_file}\" #{uid} #{gid}")
           sleep 2
         else
-          @logger.info("WinNFSd is already running and `config.winnfsd.halt_on_reload` is not set; shares will not be changed.")
+          ui.info I18n.t('vagrant_winnfsd.hosts.windows.nfs_already_running')
         end
       end
 
