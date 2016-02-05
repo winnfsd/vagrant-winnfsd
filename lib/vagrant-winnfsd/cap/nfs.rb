@@ -31,14 +31,18 @@ module VagrantWinNFSd
           f.puts(nfs_file_lines)
         end
 
+        if self.nfs_running? && env.vagrantfile.config.winnfsd.stop_on_reload
+          system("#{@nfs_stop_command}")
+        end
 
-
-        unless self.nfs_running?
+        if !self.nfs_running? || env.vagrantfile.config.winnfsd.stop_on_reload
           gid = env.vagrantfile.config.winnfsd.gid
           uid = env.vagrantfile.config.winnfsd.uid
           logging = env.vagrantfile.config.winnfsd.logging
           system("#{@nfs_start_command} #{logging} \"#{@nfs_path_file}\" #{uid} #{gid}")
           sleep 2
+        else
+          @logger.info("WinNFSd is already running and `config.winnfsd.stop_on_reload` is not set; shares will not be changed.")
         end
       end
 
