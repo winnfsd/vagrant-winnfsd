@@ -9,7 +9,7 @@ module VagrantWinNFSd
       @nfs_check_command = "\"#{executable}\" status"
       @nfs_start_command = "\"#{executable}\" start"
       @nfs_stop_command = "\"#{executable}\" halt"
-      @nfs_path_file = "#{Vagrant.source_root}/nfspaths"
+      @nfs_path_file = "#{Vagrant.user_data_path}/nfspaths"
 
       def self.nfs_export(env, ui, id, ips, folders)
         ui.info I18n.t('vagrant_winnfsd.hosts.windows.nfs_export')
