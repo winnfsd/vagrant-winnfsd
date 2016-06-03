@@ -10,9 +10,9 @@ Gem::Specification.new do |gem|
     Manage and adds support for NFS on windows.
   EOD
 
-  gem.authors  = 'Alexander Schneider'
-  gem.email    = 'alexander.schneider@jankowfsky.com'
-  gem.homepage = 'https://github.com/gm-alex/vagrant-winnfsd'
+  gem.authors  = ['Alexander Schneider', 'Marc Harding']
+  gem.email    = ['alexander.schneider@jankowfsky.com', 'info@marcharding.de']
+  gem.homepage = 'https://github.com/winnfsd/vagrant-winnfsd'
 
   gem.has_rdoc = true
   gem.license  = 'Apache 2.0'
