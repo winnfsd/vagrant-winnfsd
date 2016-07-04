@@ -11,32 +11,30 @@ module VagrantWinNFSd
       @nfs_stop_command = "\"#{executable}\" halt"
       @nfs_path_file = "#{Vagrant.source_root}/nfspaths"
 
-      def self.nfs_export(env, ui, id, ips, folders)
-        ui.info I18n.t('vagrant_winnfsd.hosts.windows.nfs_export')
+      def self.nfs_export(env, machine, ips, folders)
+        machine.ui.info I18n.t('vagrant_winnfsd.hosts.windows.nfs_export')
         sleep 0.5
 
-        self.nfs_cleanup(id)
+        self.nfs_cleanup(machine.id)
         nfs_file_lines = []
 
-        nfs_file_lines.push("# VAGRANT-BEGIN: #{Process.uid} #{id}")
+        nfs_file_lines.push("# VAGRANT-BEGIN: #{Process.uid} #{machine.id}")
         folders.each do |k, opts|
           hostpath = opts[:hostpath].dup
           hostpath.gsub!("'", "'\\\\''")
           hostpath.gsub('/', '\\')
           nfs_file_lines.push("#{hostpath}")
         end
-        nfs_file_lines.push("# VAGRANT-END: #{Process.uid} #{id}")
+        nfs_file_lines.push("# VAGRANT-END: #{Process.uid} #{machine.id}")
 
         File.open(@nfs_path_file, 'a') do |f|
           f.puts(nfs_file_lines)
         end
 
-
-
         unless self.nfs_running?
-          gid = env.vagrantfile.config.winnfsd.gid
-          uid = env.vagrantfile.config.winnfsd.uid
-          logging = env.vagrantfile.config.winnfsd.logging
+          gid = machine.config.winnfsd.gid
+          uid = machine.config.winnfsd.uid
+          logging = machine.config.winnfsd.logging
           system("#{@nfs_start_command} #{logging} \"#{@nfs_path_file}\" #{uid} #{gid}")
           sleep 2
         end

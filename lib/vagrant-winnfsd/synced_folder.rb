@@ -42,7 +42,7 @@ module VagrantWinNFSd
             machine.ui.info I18n.t("vagrant.actions.vm.nfs.exporting")
             machine.env.host.capability(
               :nfs_export,
-              machine.ui, machine.id, machine_ip, export_folders)
+              machine, machine_ip, export_folders)
           end
         rescue Vagrant::Errors::EnvironmentLockedError
           sleep 1
