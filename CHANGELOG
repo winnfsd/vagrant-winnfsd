@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+1.3.0
+------
+
+Updated binary to version 2.2.0 (many files, see https://github.com/winnfsd/winnfsd/releases/tag/2.2.0 for details)
+
+
 1.2.1
 ------
 
@@ -8,6 +14,7 @@ Updated binary to version 2.1.1 (small files, see https://github.com/winnfsd/win
 Store nfspaths in current user home directory to allow executing without administrator rights (see https://github.com/winnfsd/vagrant-winnfsd/pull/85)
 Fixed parameter merging from a basebox (see https://github.com/winnfsd/vagrant-winnfsd/issues/93)
 Fix host_ip config (see https://github.com/winnfsd/vagrant-winnfsd/pull/80)
+
 
 1.2.0
 ------
