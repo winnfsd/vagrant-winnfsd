@@ -29,7 +29,16 @@ if %1==start (
         echo already running
     ) else (
         start "" "%~dp0winnfsd" -log %2 -pathFile %3 -id %4 %5
-        echo started
+        
+        ping 127.0.0.1 -n 3 > nul
+        %windir%\system32\tasklist.exe /nh /fi "imagename eq winnfsd.exe" | %windir%\system32\find.exe /I /N "winnfsd.exe" > nul
+        
+        if errorlevel 1 (
+            echo failed to start; ensure that ports 111 and 2049 are not already in use
+            exit 1
+        ) else (
+            echo started
+        )
     )
     
     exit 0
