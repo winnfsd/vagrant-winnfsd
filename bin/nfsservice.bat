@@ -30,7 +30,7 @@ if %1==start (
     ) else (
         start "" "%~dp0winnfsd" -log %2 -pathFile %3 -id %4 %5
         
-        ping 127.0.0.1 -n 3 > nul
+        %windir%\system32\timeout.exe /t 3 > nul 2> nul & if errorlevel 1 ping 127.0.0.1 -n 3
         %windir%\system32\tasklist.exe /nh /fi "imagename eq winnfsd.exe" | %windir%\system32\find.exe /I /N "winnfsd.exe" > nul
         
         if errorlevel 1 (
