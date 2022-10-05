@@ -13,7 +13,7 @@ Supported guests:
 ## Installation
 
 ```
-$ vagrant plugin install vagrant-winnfsd
+vagrant plugin install vagrant-winnfsd
 ```
 
 ## Activate NFS for Vagrant
