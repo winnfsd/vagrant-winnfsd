@@ -28,6 +28,7 @@ if %1==start (
     if "%result%"=="winnfsd.exe" (
         echo already running
     ) else (
+        echo Running "%~dp0winnfsd" -log %2 -pathFile %3 -id %4 %5
         start "" "%~dp0winnfsd" -log %2 -pathFile %3 -id %4 %5
         
         %windir%\system32\timeout.exe /t 3 > nul 2> nul & if errorlevel 1 ping 127.0.0.1 -n 3
